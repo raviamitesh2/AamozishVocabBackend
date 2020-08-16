@@ -1,0 +1,129 @@
+﻿
+
+@{
+    ViewBag.Title = "ViewCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var AddCategory = ViewBag.AddCategory;
+}
+<br />
+
+<div class="col-md-4"><h4>View Category</h4></div>
+<div class="col-md-8" style="text-align:right;">
+    <a href="/Home/AddCategory" class="btn btn-link">Add New Category </a>
+</div>
+
+<br />
+<div id="CatgeoryDiv" >
+    &nbsp;
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script>
+    $(document).ready(function () {
+        FillGrid();
+    });
+    
+    function FillGrid() {
+        var _url = "/Home/FillCatgeoryGrid";       
+        $.ajax({
+            url: _url,
+            type: "GET",
+            crossDomain: true,
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: "json",
+            headers: {
+                //WRITE IF THEIR HAVE SOME HEADER REQUEST OR DATA
+            },
+            crossDomain: true,
+            charset: "UTF-8",
+            cache: false,
+            xhrFields: {
+                withCredentials: true
+            },
+            error: function () {
+                console.log('error');
+            },
+            success: function (data) {
+                if (data) {
+                    var IsActive = "false";
+                    var Html = '<table id="CategoryTable" cellspacing="0" width="100%">';
+                    Html += '<thead><tr><th>SerialNo</th><th>Category_En</th><th>Category_Hi</th><th>';
+                    Html += 'Category_Ur</th><th>Descr_En</th><th>Descr_Hi</th><th>Descr_Ur</th><th>Image</th><th>IsActive</th><th></th></tr></thead><tbody>';
+                    for (i = 0; i < data.length; i++) {
+                        Html += '<tr><td>' + data[i].SerialNo + '</td>';
+                        Html += '<td>' + data[i].Category_En + '</td>';
+                        if (data[i].Category_Hi) {
+                            Html += '<td>' + data[i].Category_Hi + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        if (data[i].Category_Ur) {
+                            Html += '<td>' + data[i].Category_Ur + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        Html += '<td>' + data[i].Descr_En + '</td>';
+                        if (data[i].Descr_Hi) {
+                            Html += '<td>' + data[i].Descr_Hi + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        if (data[i].Descr_Ur) {
+                            Html += '<td>' + data[i].Descr_Ur + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }                        
+                        if (data[i].IsActive) {
+                            IsActive = "True";
+                        }
+                        if (data[i].HaveImage == 1) {
+                            Html += '<td><img src="/Image/' + data[i].ImageName + '" style="display:block;" alt="" border=3 height=70 width=70></img></td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        Html += '<td>'+IsActive+'</td>';
+                        Html += '<td><a href="/Home/AddCategory/' + data[i].Id + '">Edit</a> || ';
+                        Html += '<a class="k-button" href="javascript:void(0)" data-Id=' + data[i].Id + ' onclick="Delete(this);">Delete</a></td></tr>';
+                    }
+                    Html += '</tbody></table>';
+                    $("#CatgeoryDiv").html(Html);
+                    var table = $('#CategoryTable').DataTable({
+                        "bSort": false,
+                        rowReorder: {
+                            selector: 'tr'
+                        },
+                        columnDefs: [
+                            { targets: 0, visible: false }
+                        ]
+                    });
+                }
+            }
+        });
+    }
+    function Delete(btn) {
+        var id = $(btn).attr('data-Id');
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Do you want to Delete?',
+            buttons: {
+                confirm: function () {
+                    $.getJSON('/Home/DeleteCategory', { 'Id': id }, function (data, status) {
+                        $("#CategoryTable").remove();
+                        FillGrid();
+                    });
+                },
+                cancel: function () {
+                    $.alert('Canceled!');
+                },
+            }
+        });
+    }
+</script>

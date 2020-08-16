@@ -1,0 +1,238 @@
+﻿@model AamozishVocab.DataLayer.IlmCategory
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <div id="example" class="container">
+            <section class="well">
+                <h4 class="ra-well-title">Add Category</h4>
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsActive)
+                @Html.HiddenFor(model => model.CreatedBy)
+                <div class="table-responsive">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><label class="mandatory-field">Serial No</label></td>
+                            <td colspan="3">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.SerialNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="4">&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Category</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Category_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Category_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Category_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Description</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Upload Icon</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="fileInput" name="Image" />
+                                                <span style="color:red;">Upload .png and .jpg file (less than 200kb)</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.HaveImage == 1)
+                                                {
+                                                    <img src="/Image/@Model.ImageName" style="display:block;" alt="" border="3" height="100" width="100"></img>
+                                                }
+                                                
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                <div id="divTitleEroor" style="float:left;"></div>
+                                <input type="submit" value="Save" onclick="CheckToSave();" class="btn btn-default" />
+                                @Html.ActionLink("Go back To View Category", "ViewCategory", new { @class = "btn btn-default" })
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="DivMsg" style="color:red;font-weight:bold;" class="error-msg">                   
+                </div>
+
+            </section>
+        </div>
+       
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    function CheckToSave() {
+        var result = true;
+        var ErrorMsg = "<ul>";
+        var Category_En = $("#Category_En").val().trim();
+        if (Category_En == '' || Category_En == undefined || Category_En == null) {
+            ErrorMsg += "<li>Please Fill the Category English</li>";
+            result = false;
+        }
+        var Descr_En = $("#Descr_En").val().trim();
+        if (Descr_En == '' || Descr_En == undefined || Descr_En == null) {
+            ErrorMsg += "<li>Please Fill the Description English</li>";
+            result = false;
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var fileInput = $("#fileInput").val().trim();
+            if (fileInput == '' || fileInput == undefined || fileInput == null) {
+                ErrorMsg += "<li>Please Upload Icon Image to Proceed</li>";
+                result = false;
+            }
+        }
+        ErrorMsg += "</ul>";
+        if (result) {
+            ClickToSave();
+        }
+        else {
+            $("#DivMsg").html(ErrorMsg);
+            $("#DivMsg").css('color', 'red');
+        }
+    }
+    $(window).load(function () {
+        var UserId = $(".UserContainer").attr("Userid");
+        $("#CreatedBy").val(UserId);
+    });    
+    function ClickToSave() {
+        var UserId = $(".UserContainer").attr("Userid");
+        var fileUpload = $("#fileInput").get(0);  
+        var files = fileUpload.files;
+        var obj = new FormData();
+        obj.append("Image", files[0]);
+        obj.append("Id",$("#Id").val().trim());
+        obj.append("SerialNo",$("#SerialNo").val().trim());
+        obj.append("Category_En",$("#Category_En").val().trim());
+        obj.append("Category_Hi",$("#Category_Hi").val().trim());
+        obj.append("Category_Ur",$("#Category_Ur").val().trim());
+        obj.append("Descr_En", $("#Descr_En").val().trim());
+        obj.append("Descr_Hi", $("#Descr_Hi").val().trim());
+        obj.append("Descr_Ur",$("#Descr_Ur").val().trim());
+        obj.append("IsActive",$("#IsActive").val().trim());
+        obj.append("CreatedBy", UserId);
+  
+        $.ajax({
+            url: '/Home/AddCategory',
+            type: "POST",
+            contentType: false, // Not to set any content header  
+            processData: false, // Not to process data  
+            data: obj,  
+            success: function (result) { 
+                $("#DivMsg").html(result.responseText);
+                if (result.success == true) {
+                    $("#DivMsg").css('color', 'green');
+                }
+                else {
+                    $("#DivMsg").css('color', 'red');
+                }
+                },  
+                error: function (err) {  
+                    alert(err.statusText);  
+                }  
+            });  
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

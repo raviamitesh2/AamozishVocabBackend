@@ -1,0 +1,15 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="CopyFiles" BeforeTargets="Build" Condition="Exists('$(MSBuildProjectDirectory)\wwwroot')">
+		<ItemGroup>  
+			<IgniteUIJSFiles Include="$(USERPROFILE)\.nuget\packages\igniteui\19.2.27\content\Scripts\Infragistics\js\**\*.*"/> 
+			<IgniteUICSSFiles Include="$(USERPROFILE)\.nuget\packages\igniteui\19.2.27\content\Content\Infragistics\css\**\*.*"/>
+		</ItemGroup> 
+		
+		<Copy SourceFiles="@(IgniteUIJSFiles)" 
+			DestinationFiles="@(IgniteUIJSFiles -> '$(MSBuildProjectDirectory)\wwwroot\js\%(RecursiveDir)%(Filename)%(Extension)')"
+			Condition="!Exists('$(MSBuildProjectDirectory)\wwwroot\js\%(RecursiveDir)%(Filename)%(Extension')" />  
+		<Copy SourceFiles="@(IgniteUICSSFiles)" 
+			DestinationFiles="@(IgniteUICSSFiles -> '$(MSBuildProjectDirectory)\wwwroot\css\%(RecursiveDir)%(Filename)%(Extension)')"
+			Condition="!Exists('$(MSBuildProjectDirectory)\wwwroot\css\%(RecursiveDir)%(Filename)%(Extension')" /> 
+	</Target>
+</Project>

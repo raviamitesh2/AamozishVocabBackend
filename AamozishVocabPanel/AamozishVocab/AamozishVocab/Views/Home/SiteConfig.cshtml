@@ -1,0 +1,213 @@
+﻿@model AamozishVocab.Models.IlmSiteConfigModel
+@{
+    ViewBag.Title = "Site Config";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="example" class="container">
+    <section class="well">
+        <h4 class="ra-well-title">Add Config</h4>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.IsActive)
+        @Html.HiddenFor(model => model.CreatedBy)
+        <div class="table-responsive">
+            <table style="width:100%;">
+                <tr>
+                    <td><label class="mandatory-field">Daily User Goal</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.DailyGoal, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Marks for Correct Answer</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.CorrectAnsMarks, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Marks for Wrong Answer</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.WrongAnsMarks, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Marks for Category Competed</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.CategoryCompleted, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Marks for Word Completed</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.WordCompleted, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Marks for Seven Days Streak</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.SevenDaysStreak, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Quiz Question Options</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.QuizOptions, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:center;">
+                        <div id="divTitleEroor" style="float:left;"></div>
+                        <input type="submit" value="Save" onclick="CheckToSave();" class="btn btn-default" />
+                        @Html.ActionLink("Go back To Home", "Index", new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="DivMsg" style="color:red;font-weight:bold;" class="error-msg">
+        </div>
+
+    </section>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    function CheckToSave() {
+        var result = true;
+        var ErrorMsg = "<ul>";
+        var DailyGoal = $("#DailyGoal").val().trim();
+        if (DailyGoal == '' || DailyGoal == undefined || DailyGoal == null) {
+            ErrorMsg += "<li>Please Fill the Daily Goal</li>";
+            result = false;
+        }
+        var CorrectAnsMarks = $("#CorrectAnsMarks").val().trim();
+        if (CorrectAnsMarks == '' || CorrectAnsMarks == undefined || CorrectAnsMarks == null) {
+            ErrorMsg += "<li>Please Fill the Correct Ans Marks</li>";
+            result = false;
+        }
+        var WrongAnsMarks = $("#WrongAnsMarks").val().trim();
+        if (WrongAnsMarks == '' || WrongAnsMarks == undefined || WrongAnsMarks == null) {
+            ErrorMsg += "<li>Please Fill the Wrong Ans Marks</li>";
+            result = false;
+        }
+        var CategoryCompleted = $("#CategoryCompleted").val().trim();
+        if (CategoryCompleted == '' || CategoryCompleted == undefined || CategoryCompleted == null) {
+            ErrorMsg += "<li>Please Fill the Category Completed</li>";
+            result = false;
+        }
+        var WordCompleted = $("#WordCompleted").val().trim();
+        if (WordCompleted == '' || WordCompleted == undefined || WordCompleted == null) {
+            ErrorMsg += "<li>Please Fill the Word Completed</li>";
+            result = false;
+        }
+        var SevenDaysStreak = $("#SevenDaysStreak").val().trim();
+        if (SevenDaysStreak == '' || SevenDaysStreak == undefined || SevenDaysStreak == null) {
+            ErrorMsg += "<li>Please Fill valid Seven Days Streak</li>";
+            result = false;
+        }
+        var QuizOptions = $("#QuizOptions").val().trim();
+        if (QuizOptions == '' || QuizOptions == undefined || QuizOptions == null || QuizOptions <= 0) {
+            ErrorMsg += "<li>Please Fill valid Quiz Question Option</li>";
+            result = false;
+        }
+        
+        ErrorMsg += "</ul>";
+        if (result) {
+            ClickToSave();
+        }
+        else {
+            $("#DivMsg").html(ErrorMsg);
+            $("#DivMsg").css('color', 'red');
+        }
+    }
+    $(window).load(function () {
+        var UserId = $(".UserContainer").attr("Userid");
+        $("#CreatedBy").val(UserId);
+    });
+    function ClickToSave() {
+        var UserId = $(".UserContainer").attr("Userid");
+        var obj = new FormData();
+        obj.append("Id",$("#Id").val().trim());
+        obj.append("DailyGoal",$("#DailyGoal").val().trim());
+        obj.append("CorrectAnsMarks",$("#CorrectAnsMarks").val().trim());
+        obj.append("WrongAnsMarks",$("#WrongAnsMarks").val().trim());
+        obj.append("WordCompleted",$("#WordCompleted").val().trim());
+        obj.append("CategoryCompleted", $("#CategoryCompleted").val().trim());
+        obj.append("SevenDaysStreak", $("#SevenDaysStreak").val().trim());
+        obj.append("QuizOptions", $("#QuizOptions").val().trim());
+        obj.append("IsActive",$("#IsActive").val().trim());
+        obj.append("CreatedBy", UserId);
+
+        $.ajax({
+            url: '/Home/SiteConfig',
+            type: "POST",
+            contentType: false, 
+            processData: false, 
+            data: obj,
+            success: function (result) {
+                $("#DivMsg").html(result.responseText);
+                if (result.success == true) {
+                    $("#DivMsg").css('color', 'green');
+                }
+                else {
+                    $("#DivMsg").css('color', 'red');
+                }
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

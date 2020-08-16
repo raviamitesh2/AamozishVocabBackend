@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";   
+    string RekhtaWorldUrl = System.Configuration.ConfigurationManager.AppSettings["RekhtaWorldUrl"].ToString();
+    string returnUrl = Request.Url.AbsoluteUri;
+    var WorldLoginUrl =RekhtaWorldUrl + "/Account/Login?returnUrl=" + returnUrl;
+}
+    <div class="jumbotron SignInDiv" style="display:none;text-align:center">
+        <p><a href="javascript:void(0)" style="width:250px;" class="btn btn-primary SignIn">Sign In </a></p>
+    </div>
+    <div class="jumbotron IndexMenu" style="display:none;text-align:center">
+        <p><a href="/Home/ViewCategory" style="width:250px;" class="btn btn-primary">Add Category </a></p>
+        <p><a href="/Home/ViewWord" style="width:250px;" class="btn btn-primary">Add Word </a></p>
+        <p><a href="javascript:void(0)" style="width:250px;" class="btn btn-primary">Add Word Origin </a></p>
+        <p><a href="javascript:void(0)" style="width:250px;" class="btn btn-primary">Add User Badges </a></p>
+        <p><a href="javascript:void(0)" style="width:250px;" class="btn btn-primary">Add User Configuration </a></p>
+    </div>

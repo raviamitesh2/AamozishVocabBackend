@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Rekhta_V5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TranslatorId" Type="uniqueidentifier" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="Title_En" Type="nvarchar(max)" />
+          <Property Name="Title_Hi" Type="nvarchar(max)" />
+          <Property Name="Title_Ur" Type="nvarchar(max)" />
+          <Property Name="Content_En" Type="nvarchar(max)" />
+          <Property Name="Content_Hi" Type="nvarchar(max)" />
+          <Property Name="Content_Ur" Type="nvarchar(max)" />
+          <Property Name="Translation_En" Type="nvarchar(max)" />
+          <Property Name="FootNote_En" Type="nvarchar(max)" />
+          <Property Name="FootNote_Hi" Type="nvarchar(max)" />
+          <Property Name="FootNote_Ur" Type="nvarchar(max)" />
+          <Property Name="Radeef_En" Type="nvarchar(max)" />
+          <Property Name="Radeef_Hi" Type="nvarchar(max)" />
+          <Property Name="Radeef_Ur" Type="nvarchar(max)" />
+          <Property Name="Alignment" Type="int" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="IsMapped" Type="bit" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLineCountValid" Type="bit" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+          <Property Name="DatePublished" Type="datetime" />
+          <Property Name="DateLastPublished" Type="datetime" />
+          <Property Name="SEO_KeywordsEn" Type="nvarchar(max)" />
+          <Property Name="SEO_DescriptionEn" Type="nvarchar(max)" />
+          <Property Name="SEO_TextEn" Type="nvarchar(max)" />
+          <Property Name="SEO_KeywordsHi" Type="nvarchar(max)" />
+          <Property Name="SEO_DescriptionHi" Type="nvarchar(max)" />
+          <Property Name="SEO_TextHi" Type="nvarchar(max)" />
+          <Property Name="SEO_KeywordsUr" Type="nvarchar(max)" />
+          <Property Name="SEO_DescriptionUr" Type="nvarchar(max)" />
+          <Property Name="SEO_TextUr" Type="nvarchar(max)" />
+          <Property Name="SEO_Slug" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsChanged" Type="bit" Nullable="false" />
+          <Property Name="IsDeferred" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserInfo" Type="nvarchar(max)" />
+          <Property Name="SubTitle_En" Type="nvarchar(max)" />
+          <Property Name="SubTitle_Hi" Type="nvarchar(max)" />
+          <Property Name="SubTitle_Ur" Type="nvarchar(max)" />
+          <Property Name="LongRadeef_En" Type="nvarchar(max)" />
+          <Property Name="LongRadeef_Hi" Type="nvarchar(max)" />
+          <Property Name="LongRadeef_Ur" Type="nvarchar(max)" />
+          <Property Name="ShortUrlIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Difficulty" Type="smallint" />
+          <Property Name="Quality" Type="smallint" />
+          <Property Name="Popularity" Type="smallint" />
+          <Property Name="IsTranslation" Type="bit" Nullable="false" />
+          <Property Name="Explanation_En" Type="nvarchar(max)" />
+          <Property Name="TextType" Type="bit" Nullable="false" />
+          <Property Name="ContentHtml_En" Type="nvarchar(max)" />
+          <Property Name="ContentHtml_Hi" Type="nvarchar(max)" />
+          <Property Name="ContentHtml_Ur" Type="nvarchar(max)" />
+          <Property Name="TranslationHtml_En" Type="nvarchar(max)" />
+          <Property Name="ExplanationHtml_En" Type="nvarchar(max)" />
+          <Property Name="ExplainerId" Type="uniqueidentifier" />
+          <Property Name="Explanation_Hi" Type="nvarchar(max)" />
+          <Property Name="Explanation_Ur" Type="nvarchar(max)" />
+          <Property Name="Translation_Hi" Type="nvarchar(max)" />
+          <Property Name="Translation_Ur" Type="nvarchar(max)" />
+          <Property Name="TranslationHtml_Hi" Type="nvarchar(max)" />
+          <Property Name="TranslationHtml_Ur" Type="nvarchar(max)" />
+          <Property Name="ExplanationHtml_Hi" Type="nvarchar(max)" />
+          <Property Name="ExplanationHtml_Ur" Type="nvarchar(max)" />
+          <Property Name="HaveBannerWeb" Type="bit" Nullable="false" />
+          <Property Name="HaveBannerMobile" Type="bit" Nullable="false" />
+          <Property Name="Justified" Type="bit" Nullable="false" />
+          <Property Name="Out_of_Copyright_Purview" Type="bit" Nullable="false" />
+          <Property Name="Copyright_Permission" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Rekhta_V5ModelStoreContainer">
+          <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Rekhta_V5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ILMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contents" EntityType="Rekhta_V5Model.Content" />
+        </EntityContainer>
+        <EntityType Name="Content">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TypeId" Type="Guid" Nullable="false" />
+          <Property Name="TranslatorId" Type="Guid" />
+          <Property Name="ParentId" Type="Guid" />
+          <Property Name="Title_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Translation_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FootNote_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Radeef_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Radeef_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Radeef_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Alignment" Type="Int32" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="IsMapped" Type="Boolean" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLineCountValid" Type="Boolean" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DatePublished" Type="DateTime" Precision="3" />
+          <Property Name="DateLastPublished" Type="DateTime" Precision="3" />
+          <Property Name="SEO_KeywordsEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_TextEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_KeywordsHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_DescriptionHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_TextHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_KeywordsUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_DescriptionUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_TextUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SEO_Slug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeferred" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+          <Property Name="UserInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SubTitle_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongRadeef_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongRadeef_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LongRadeef_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortUrlIndex" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Difficulty" Type="Int16" />
+          <Property Name="Quality" Type="Int16" />
+          <Property Name="Popularity" Type="Int16" />
+          <Property Name="IsTranslation" Type="Boolean" Nullable="false" />
+          <Property Name="Explanation_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TextType" Type="Boolean" Nullable="false" />
+          <Property Name="ContentHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TranslationHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExplanationHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExplainerId" Type="Guid" />
+          <Property Name="Explanation_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Explanation_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Translation_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Translation_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TranslationHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TranslationHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExplanationHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExplanationHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HaveBannerWeb" Type="Boolean" Nullable="false" />
+          <Property Name="HaveBannerMobile" Type="Boolean" Nullable="false" />
+          <Property Name="Justified" Type="Boolean" Nullable="false" />
+          <Property Name="Out_of_Copyright_Purview" Type="Boolean" Nullable="false" />
+          <Property Name="Copyright_Permission" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Rekhta_V5ModelStoreContainer" CdmEntityContainer="ILMEntities">
+          <EntitySetMapping Name="Contents">
+            <EntityTypeMapping TypeName="Rekhta_V5Model.Content">
+              <MappingFragment StoreEntitySet="Content">
+                <ScalarProperty Name="Copyright_Permission" ColumnName="Copyright_Permission" />
+                <ScalarProperty Name="Out_of_Copyright_Purview" ColumnName="Out_of_Copyright_Purview" />
+                <ScalarProperty Name="Justified" ColumnName="Justified" />
+                <ScalarProperty Name="HaveBannerMobile" ColumnName="HaveBannerMobile" />
+                <ScalarProperty Name="HaveBannerWeb" ColumnName="HaveBannerWeb" />
+                <ScalarProperty Name="ExplanationHtml_Ur" ColumnName="ExplanationHtml_Ur" />
+                <ScalarProperty Name="ExplanationHtml_Hi" ColumnName="ExplanationHtml_Hi" />
+                <ScalarProperty Name="TranslationHtml_Ur" ColumnName="TranslationHtml_Ur" />
+                <ScalarProperty Name="TranslationHtml_Hi" ColumnName="TranslationHtml_Hi" />
+                <ScalarProperty Name="Translation_Ur" ColumnName="Translation_Ur" />
+                <ScalarProperty Name="Translation_Hi" ColumnName="Translation_Hi" />
+                <ScalarProperty Name="Explanation_Ur" ColumnName="Explanation_Ur" />
+                <ScalarProperty Name="Explanation_Hi" ColumnName="Explanation_Hi" />
+                <ScalarProperty Name="ExplainerId" ColumnName="ExplainerId" />
+                <ScalarProperty Name="ExplanationHtml_En" ColumnName="ExplanationHtml_En" />
+                <ScalarProperty Name="TranslationHtml_En" ColumnName="TranslationHtml_En" />
+                <ScalarProperty Name="ContentHtml_Ur" ColumnName="ContentHtml_Ur" />
+                <ScalarProperty Name="ContentHtml_Hi" ColumnName="ContentHtml_Hi" />
+                <ScalarProperty Name="ContentHtml_En" ColumnName="ContentHtml_En" />
+                <ScalarProperty Name="TextType" ColumnName="TextType" />
+                <ScalarProperty Name="Explanation_En" ColumnName="Explanation_En" />
+                <ScalarProperty Name="IsTranslation" ColumnName="IsTranslation" />
+                <ScalarProperty Name="Popularity" ColumnName="Popularity" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+                <ScalarProperty Name="ShortUrlIndex" ColumnName="ShortUrlIndex" />
+                <ScalarProperty Name="LongRadeef_Ur" ColumnName="LongRadeef_Ur" />
+                <ScalarProperty Name="LongRadeef_Hi" ColumnName="LongRadeef_Hi" />
+                <ScalarProperty Name="LongRadeef_En" ColumnName="LongRadeef_En" />
+                <ScalarProperty Name="SubTitle_Ur" ColumnName="SubTitle_Ur" />
+                <ScalarProperty Name="SubTitle_Hi" ColumnName="SubTitle_Hi" />
+                <ScalarProperty Name="SubTitle_En" ColumnName="SubTitle_En" />
+                <ScalarProperty Name="UserInfo" ColumnName="UserInfo" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeferred" ColumnName="IsDeferred" />
+                <ScalarProperty Name="IsChanged" ColumnName="IsChanged" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SEO_Slug" ColumnName="SEO_Slug" />
+                <ScalarProperty Name="SEO_TextUr" ColumnName="SEO_TextUr" />
+                <ScalarProperty Name="SEO_DescriptionUr" ColumnName="SEO_DescriptionUr" />
+                <ScalarProperty Name="SEO_KeywordsUr" ColumnName="SEO_KeywordsUr" />
+                <ScalarProperty Name="SEO_TextHi" ColumnName="SEO_TextHi" />
+                <ScalarProperty Name="SEO_DescriptionHi" ColumnName="SEO_DescriptionHi" />
+                <ScalarProperty Name="SEO_KeywordsHi" ColumnName="SEO_KeywordsHi" />
+                <ScalarProperty Name="SEO_TextEn" ColumnName="SEO_TextEn" />
+                <ScalarProperty Name="SEO_DescriptionEn" ColumnName="SEO_DescriptionEn" />
+                <ScalarProperty Name="SEO_KeywordsEn" ColumnName="SEO_KeywordsEn" />
+                <ScalarProperty Name="DateLastPublished" ColumnName="DateLastPublished" />
+                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="IsLineCountValid" ColumnName="IsLineCountValid" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsMapped" ColumnName="IsMapped" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Alignment" ColumnName="Alignment" />
+                <ScalarProperty Name="Radeef_Ur" ColumnName="Radeef_Ur" />
+                <ScalarProperty Name="Radeef_Hi" ColumnName="Radeef_Hi" />
+                <ScalarProperty Name="Radeef_En" ColumnName="Radeef_En" />
+                <ScalarProperty Name="FootNote_Ur" ColumnName="FootNote_Ur" />
+                <ScalarProperty Name="FootNote_Hi" ColumnName="FootNote_Hi" />
+                <ScalarProperty Name="FootNote_En" ColumnName="FootNote_En" />
+                <ScalarProperty Name="Translation_En" ColumnName="Translation_En" />
+                <ScalarProperty Name="Content_Ur" ColumnName="Content_Ur" />
+                <ScalarProperty Name="Content_Hi" ColumnName="Content_Hi" />
+                <ScalarProperty Name="Content_En" ColumnName="Content_En" />
+                <ScalarProperty Name="Title_Ur" ColumnName="Title_Ur" />
+                <ScalarProperty Name="Title_Hi" ColumnName="Title_Hi" />
+                <ScalarProperty Name="Title_En" ColumnName="Title_En" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TranslatorId" ColumnName="TranslatorId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

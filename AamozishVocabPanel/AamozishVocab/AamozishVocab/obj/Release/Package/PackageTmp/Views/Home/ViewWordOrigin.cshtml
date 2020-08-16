@@ -1,0 +1,106 @@
+﻿
+
+@{
+    ViewBag.Title = "View WordOrigin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div class="col-md-4"><h4>View Word Origin</h4></div>
+<div class="col-md-8" style="text-align:right;">
+    <a href="/Home/AddWordOrigin" class="btn btn-link">Add New Origin </a>   
+</div>
+
+<br />
+<div id="OriginDiv">
+    &nbsp;
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        FillGrid();
+    });
+
+    function FillGrid() {
+        var _url = "/Home/FillWordOrigin";
+        $.ajax({
+            url: _url,
+            type: "GET",
+            crossDomain: true,
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: "json",
+            headers: {
+                //WRITE IF THEIR HAVE SOME HEADER REQUEST OR DATA
+            },
+            crossDomain: true,
+            charset: "UTF-8",
+            cache: false,
+            xhrFields: {
+                withCredentials: true
+            },
+            error: function () {
+                console.log('error');
+            },
+            success: function (data) {
+                if (data) {
+                    var IsActive = "false";
+                    var Html = '<table id="OriginTable" cellspacing="0" width="100%">';
+                    Html += '<thead><tr><th>Name_En</th><th>Name_Hi</th><th>Name_Ur</th><th>';
+                    Html += 'IsActive</th><th></th></tr></thead><tbody>';
+                    for (i = 0; i < data.length; i++) {
+                        Html += '<tr><td>' + data[i].Name_En + '</td>';
+                        if (data[i].Name_Hi) {
+                            Html += '<td>' + data[i].Name_Hi + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        if (data[i].Name_Ur) {
+                            Html += '<td>' + data[i].Name_Ur + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }                        
+                        if (data[i].IsActive) {
+                            IsActive = "True";
+                        }                        
+                        Html += '<td>'+IsActive+'</td>';
+                        Html += '<td><a href="/Home/AddWordOrigin/' + data[i].Id + '">Edit</a> || ';
+                        Html += '<a class="k-button" href="javascript:void(0)" data-Id=' + data[i].Id + ' onclick="Delete(this);">Delete</a></td></tr>';
+                    }
+                    Html += '</tbody></table>';
+                    $("#OriginDiv").html(Html);
+                    var table = $('#OriginTable').DataTable({
+                        "bSort": false,
+                        rowReorder: {
+                            selector: 'tr'
+                        },
+                        columnDefs: [
+                            { targets: 0, visible: false }
+                        ]
+                    });
+                }
+            }
+        });
+    }
+    function Delete(btn) {
+        var id = $(btn).attr('data-Id');
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Do you want to Delete?',
+            buttons: {
+                confirm: function () {
+                    $.getJSON('/Home/DeleteWordOrigin', { 'Id': id }, function (data, status) {
+                        $("#OriginTable").remove();
+                        FillGrid();
+                    });
+                },
+                cancel: function () {
+                    $.alert('Cancelled!');
+                },
+            }
+        });
+    }
+</script>

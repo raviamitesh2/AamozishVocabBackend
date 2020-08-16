@@ -1,0 +1,115 @@
+﻿
+
+@{
+    ViewBag.Title = "View Word";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<div class="col-md-4"><h4>View Word</h4></div>
+<div class="col-md-8" style="text-align:right;">
+    <a href="/Home/AddWord" class="btn btn-link">Add New Word </a>
+</div>
+
+<br />
+<div id="WordDiv">
+    &nbsp;
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        FillGrid();
+    });
+
+    function FillGrid() {
+        var _url = "/Home/FillWordGrid";
+
+        $.ajax({
+            url: _url,
+            type: "GET",
+            crossDomain: true,
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: "json",
+            headers: {},
+            crossDomain: true,
+            charset: "UTF-8",
+            cache: false,
+            xhrFields: {
+                withCredentials: true
+            },
+            error: function () {
+                console.log('error');
+            },
+            success: function (data) {
+                if (data) {
+                    var Html = '<table id="WordTable" cellspacing="0" width="100%">';
+                    Html += '<thead><tr><th>SerialNo</th><th>Category_En</th><th>Word_En</th><th>';
+                    Html += 'Word_Hi</th><th>Word_Ur</th><th>Descr_En</th><th>Descr_Hi</th><th>Descr_Ur</th><th></th></tr></thead><tbody>';
+                    for (i = 0; i < data.length; i++) {
+                        Html += '<tr><td>' + data[i].SerialNo + '</td>';
+                        Html += '<td>' + data[i].Category_En + '</td>';
+                        Html += '<td>' + data[i].Word_En + '</td>';
+                        if (data[i].Word_Hi) {
+                            Html += '<td>' + data[i].Word_Hi + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        if (data[i].Word_Ur) {
+                            Html += '<td>' + data[i].Word_Ur + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }                        
+                        Html += '<td>' + data[i].Descr_En + '</td>';
+                        if (data[i].Descr_Hi) {
+                            Html += '<td>' + data[i].Descr_Hi + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }
+                        if (data[i].Descr_Ur) {
+                            Html += '<td>' + data[i].Descr_Ur + '</td>';
+                        }
+                        else {
+                            Html += '<td></td>';
+                        }                         
+                        Html += '<td><a href="/Home/AddWord/' + data[i].Id + '">Edit</a> || ';
+                        Html += '<a class="k-button" href="javascript:void(0)" data-Id=' + data[i].Id + ' onclick="Delete(this);">Delete</a></td></tr>';
+                    }
+                    Html += '</tbody></table>';
+                    $("#WordDiv").html(Html);
+                    var table = $('#WordTable').DataTable({
+                        "bSort": false,
+                        rowReorder: {
+                            selector: 'tr'
+                        },
+                        columnDefs: [
+                            { targets: 0, visible: false }
+                        ]
+                    });
+                }
+            }
+        });
+    }
+    function Delete(btn) {
+        var id = $(btn).attr('data-Id');
+        $.confirm({
+            title: 'Confirm!',
+            content: 'Do you want to Delete?',
+            buttons: {
+                confirm: function () {
+                    $.getJSON('/Home/DeleteWord', { 'Id': id }, function (data, status) {
+                        $("#WordTable").remove();
+                        FillGrid();
+                    });
+                },
+                cancel: function () {
+                    $.alert('Cancelled!');
+                },
+            }
+        });
+    }
+</script>

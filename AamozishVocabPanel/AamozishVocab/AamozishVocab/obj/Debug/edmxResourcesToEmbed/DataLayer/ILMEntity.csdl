@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Rekhta_V5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ILMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contents" EntityType="Rekhta_V5Model.Content" />
+  </EntityContainer>
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="TypeId" Type="Guid" Nullable="false" />
+    <Property Name="TranslatorId" Type="Guid" />
+    <Property Name="ParentId" Type="Guid" />
+    <Property Name="Title_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Title_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Title_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Content_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Content_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Content_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Translation_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FootNote_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FootNote_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FootNote_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Radeef_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Radeef_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Radeef_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Alignment" Type="Int32" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="IsMapped" Type="Boolean" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsLineCountValid" Type="Boolean" Nullable="false" />
+    <Property Name="IsValid" Type="Boolean" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DatePublished" Type="DateTime" Precision="3" />
+    <Property Name="DateLastPublished" Type="DateTime" Precision="3" />
+    <Property Name="SEO_KeywordsEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_DescriptionEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_TextEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_KeywordsHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_DescriptionHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_TextHi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_KeywordsUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_DescriptionUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_TextUr" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SEO_Slug" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsChanged" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeferred" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Guid" Nullable="false" />
+    <Property Name="ModifiedBy" Type="Guid" Nullable="false" />
+    <Property Name="UserInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SubTitle_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LongRadeef_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LongRadeef_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LongRadeef_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ShortUrlIndex" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Difficulty" Type="Int16" />
+    <Property Name="Quality" Type="Int16" />
+    <Property Name="Popularity" Type="Int16" />
+    <Property Name="IsTranslation" Type="Boolean" Nullable="false" />
+    <Property Name="Explanation_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TextType" Type="Boolean" Nullable="false" />
+    <Property Name="ContentHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContentHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContentHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TranslationHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExplanationHtml_En" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExplainerId" Type="Guid" />
+    <Property Name="Explanation_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Explanation_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Translation_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Translation_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TranslationHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TranslationHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExplanationHtml_Hi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExplanationHtml_Ur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HaveBannerWeb" Type="Boolean" Nullable="false" />
+    <Property Name="HaveBannerMobile" Type="Boolean" Nullable="false" />
+    <Property Name="Justified" Type="Boolean" Nullable="false" />
+    <Property Name="Out_of_Copyright_Purview" Type="Boolean" Nullable="false" />
+    <Property Name="Copyright_Permission" Type="Boolean" Nullable="false" />
+  </EntityType>
+</Schema>

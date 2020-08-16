@@ -1,0 +1,251 @@
+﻿@model AamozishVocab.Models.ILMQuestionMasterModel
+@{
+    ViewBag.Title = "QuizEditor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var OptionCount = 0;
+    if (ViewBag.Action == "Edit")
+    {
+        OptionCount = Model.QuestionOptions.Count();
+    }
+    else
+    {
+        OptionCount = ViewBag.OptionCount;
+    }
+}
+
+<div id="example" class="container">
+    <section class="well">
+        <h4 class="ra-well-title">Add Question</h4>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.IsActive)
+        @Html.HiddenFor(model => model.CreatedBy)
+        <div class="table-responsive">
+            <table style="width:100%;">
+                <tr>
+                    <td><label class="mandatory-field">Category</label></td>
+                    <td>
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-8 col-md-8">
+                                    @Html.DropDownListFor(Model => Model.CategoryId, new SelectList(ViewBag.Category, "Value", "Text")
+                                   , new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Word</label></td>
+                    <td>
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-8 col-md-8">
+                                    @Html.DropDownListFor(Model => Model.WordId, new SelectList(ViewBag.Word, "Value", "Text")
+                                   , new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+
+                <tr>
+                    <th colspan="4">&nbsp;</th>
+                </tr>
+                <tr>
+                    <td><label class="mandatory-field">Question</label></td>
+                    <td colspan="3">
+                        <div class="form-horizontal form-widgets col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12 col-md-12">
+                                    @Html.EditorFor(model => model.Desc_En, new { htmlAttributes = new { @class = "form-control", @placeholder = "Question", @style = "width: 900px;max-width: 900px;" } })
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <section class="well">
+                            <h2>Options </h2>
+                            <table style="width:100%;">
+                                <tr>
+                                    <th></th>
+                                    <th style="text-align:center;" class="mandatory-field">IsCorrect</th>
+                                    <th style="text-align:center;" class="mandatory-field">English</th>
+                                    <th style="text-align:center;" class="mandatory-field">Hindi</th>
+                                </tr>
+                                @for (int i = 1; i <= OptionCount; i++)
+                                {
+                                    <tr>
+                                        <td><label class="mandatory-field">Option @i</label>
+                                        <input type="hidden" id="hdn_@i" name="hdn_@i" value="" />
+                                        </td>
+                                        <td style="text-align:center"><input type="checkbox" id="myCheck_@i"></td>
+                                        <td style="text-align:center"><input type="text" class="form-control" id="OptionEn_@i"></td>
+                                        <td style="text-align:center"><input type="text" class="form-control" id="OptionHi_@i"></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4">&nbsp;</td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </section>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align:center;">
+                        <div id="divTitleEroor" style="float:left;"></div>
+                        <input type="submit" value="Save" onclick="CheckToSave();" class="btn btn-default" />
+                        @Html.ActionLink("Go back To Quiz", "Quiz", new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="DivMsg" style="color:red;font-weight:bold;" class="error-msg">
+        </div>
+
+    </section>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        FillOptions();
+    });
+    function FillOptions() {
+        var Options = @Html.Raw(Json.Encode(Model.QuestionOptions));
+        var a = 1;
+        if (Options.length > 0) {
+            for (var i = 0; i < Options.length; i++) {
+                var checked = Options[i].IsCorrect;
+                var optionEn = Options[i].Option_En;
+                var optionHi = Options[i].Option_Hi;
+                var optionId = Options[i].Id;
+                $("#OptionEn_" + a).val(optionEn);
+                $("#OptionHi_" + a).val(optionHi);
+                $("#myCheck_" + a).prop("checked", checked);
+                $("#hdn_" + a).val(optionId);
+                a = a + 1;
+            }
+        }
+    }
+    $('input[type="checkbox"]').on('change', function() {
+         $('input[type="checkbox"]').not(this).prop('checked', false);
+     });
+    function CheckToSave() {
+        var result = true;
+        var ErrorMsg = "<ul>";
+        var check = "";
+        check = $("#CategoryId").val().trim();
+        if (check == '' || check == undefined || check == null) {
+            ErrorMsg += "<li>Please Select the Category</li>";
+            result = false;
+        }
+        check = $("#WordId").val().trim();
+        if (check == '' || check == undefined || check == null) {
+            ErrorMsg += "<li>Please Select the Word</li>";
+            result = false;
+        }
+        check = $("#Desc_En").val().trim();
+        if (check == '' || check == undefined || check == null) {
+            ErrorMsg += "<li>Please Fill the Question</li>";
+            result = false;
+        }
+        var checkboxChecked = false;
+        for (i = 1; i <= @OptionCount; i++) {
+            check = $("#OptionEn_"+i).val().trim();
+            if (check == '' || check == undefined || check == null) {
+                ErrorMsg += "<li>Please Fill the Option English"+i+"</li>";
+                result = false;
+            }
+            check = $("#OptionHi_"+i).val().trim();
+            if (check == '' || check == undefined || check == null) {
+                ErrorMsg += "<li>Please Fill the Option Hindi"+i+"</li>";
+                result = false;
+            }
+            if ($("#myCheck_"+i).is(":checked")) {
+                checkboxChecked = true;
+            }
+        }
+        if (checkboxChecked == false) {
+            ErrorMsg += "<li>Please check the correct Answer out of " + @OptionCount + " Option</li>";
+            result = false;
+        }
+        ErrorMsg += "</ul>";
+        if (result) {
+            ClickToSave();
+        }
+        else {
+            $("#DivMsg").html(ErrorMsg);
+            $("#DivMsg").css('color', 'red');
+        }
+    }
+    $(window).load(function () {
+        var UserId = $(".UserContainer").attr("Userid");
+        $("#CreatedBy").val(UserId);
+    });
+    function ClickToSave() {
+        var QuestionOptions = [];
+        for (i = 1; i <= @OptionCount; i++) {
+            var OptionEn = "OptionEn_" + i;
+            var OptionHi = "OptionHi_" + i;
+            var myCheck = "myCheck_" + i;
+            var hdnId =  "hdn_"+i;
+            var Options = {
+                Id: $("#"+hdnId).val(),
+                Option_En: $("#" + OptionEn).val().trim(),
+                Option_Hi: $("#" + OptionHi).val().trim(),
+                IsCorrect: $("#" + myCheck).is(":checked"),
+                QuestionId: $("#Id").val().trim(),
+                IsActive: $("#IsActive").val().trim()
+            }
+            QuestionOptions.push(Options);
+        }
+
+        var UserId = $(".UserContainer").attr("Userid");
+        var Id = $("#Id").val().trim();
+        var obj = {Id: Id,
+            CategoryId: $("#CategoryId").val().trim(),
+            WordId: $("#WordId").val().trim(),
+            Desc_En: $("#Desc_En").val().trim(),
+            IsActive: $("#IsActive").val().trim(),
+            QuestionOptions : QuestionOptions,
+            CreatedBy: UserId
+            };
+
+        $.ajax({
+                    url:'@Url.Action("QuizEditor")',
+                    contentType:'application/json; charset=utf-8',
+                    data: JSON.stringify({obj: obj, option: QuestionOptions}),
+                    type:'POST',
+                    success:function(result){
+                        $("#DivMsg").html(result.responseText);
+                        if (result.success == true) {
+                            $("#DivMsg").css('color', 'green');
+                        }
+                        else {
+                            $("#DivMsg").css('color', 'red');
+                        }
+                    },
+                    error:function(){
+                        alert(err.statusText);
+                    }
+        });
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,1285 @@
+﻿@model AamozishVocab.Models.IlmWordModel
+
+@{
+    ViewBag.Title = "Add Word";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Add Word</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#Home"><label class="mandatory-field">Sher</label></a></li>
+        <li><a data-toggle="tab" href="#Other"><label class="mandatory-field">More..</label></a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="Home" class="tab-pane fade in active">
+            <section class="well">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.IsActive)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.SEO_Slug)
+                <div class="table-responsive">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><label class="mandatory-field">Serial No</label></td>
+                            <td colspan="3">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(Model => Model.SerialNo, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Category</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.DropDownListFor(Model => Model.CatgeoryId, new SelectList(ViewBag.Category, "Value", "Text")
+                                           , new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Word</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Word_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Word_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Word_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Description</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.EditorFor(model => model.Descr_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Sher</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <select id="Sher" class="form-control btn dropdown-toggle btn-default select" data-live-search="true" title="Select"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Explanation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherExplanation_En, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherExplanation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherExplanation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Translation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherTranslation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherTranslation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.SherTranslation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Sher Audio</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="SherAudio" name="Audio" />
+                                                <span style="color:red;">Upload .mp3 and .ogg file</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.SherAudio != "")
+                                                {
+                                                    <audio controls>
+                                                        <source src="/Audio/@Model.SherAudio" type="audio/ogg">
+                                                        <source src="/Audio/@Model.SherAudio" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Part of Speech</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.DropDownListFor(model => model.PartOfSpeech,
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "Noun",  Value = "1" },
+                                                new SelectListItem { Text = "Pronoun",  Value = "2" },
+                                                new SelectListItem { Text = "Verb",  Value = "3" },
+                                                new SelectListItem { Text = "Adjective",  Value = "4" },
+                                                new SelectListItem { Text = "Adverb",  Value = "5" },
+                                                new SelectListItem { Text = "Preposition",  Value = "6" },
+                                                new SelectListItem { Text = "Conjuction",  Value = "7" },
+                                                new SelectListItem { Text = "Interjection",  Value = "8" },
+                                            },
+                                             new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                            @*, multiple = "multiple"*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Word Type</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.DropDownListFor(model => model.WordType,
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "Masculine",  Value = "M" },
+                                                new SelectListItem { Text = "Feminine",  Value = "F" },
+                                            },
+                                             new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Word Roots</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.DropDownListFor(Model => Model.WordRoots, new SelectList(ViewBag.WordRoots, "Value", "Text"),
+                                             new { @class = "form-control selectpicker", data_live_search = "true", title = "Select" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><label>Synonyms</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.WordSynonyms, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Upload Icon</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="fileInput" name="Image" />
+                                                <span style="color:red;">Upload .png and .jpg file (less than 200kb)</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.HaveImage == 1)
+                                                {
+                                                    <img src="/Image/@Model.ImageName" style="display:block;" alt="" border="3" height="100" width="100">
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Word Audio</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="WordAudio" name="Audio" />
+                                                <span style="color:red;">Upload .mp3 and .ogg file</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.WordAudio != "")
+                                                {
+                                                    <audio controls>
+                                                        <source src="/Audio/@Model.WordAudio" type="audio/ogg">
+                                                        <source src="/Audio/@Model.WordAudio" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <section class="well">
+                        <h2>Quiz </h2>
+                        <table style="width:100%;">
+                            <tr>
+                                <th></th>
+                                <th>Is Correct</th>
+                                <th style="text-align:center;" class="mandatory-field">English</th>
+                                <th style="text-align:center;" class="mandatory-field">Hindi</th>
+                            </tr>
+                            <tr>
+                                <td><label class="mandatory-field">Option-1 </label></td>
+                                <td>@Html.RadioButtonFor(model => model.IsCorrect, "1")</td>
+                                <td>
+                                    <div class="form-horizontal form-widgets col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-12 col-md-12">
+                                                @Html.EditorFor(model => model.QuizOptionOne_En, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-horizontal form-widgets col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-12 col-md-12">
+                                                @Html.EditorFor(model => model.QuizOptionOne_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class="mandatory-field">Option-2 </label></td>
+                                <td>@Html.RadioButtonFor(model => model.IsCorrect, "2")</td>
+                                <td>
+                                    <div class="form-horizontal form-widgets col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-12 col-md-12">
+                                                @Html.EditorFor(model => model.QuizOptionTwo_En, new { htmlAttributes = new { @class = "form-control" } })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-horizontal form-widgets col-sm-12">
+                                        <div class="form-group">
+                                            <div class="col-sm-12 col-md-12">
+                                                @Html.EditorFor(model => model.QuizOptionTwo_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </div>
+
+            </section>
+        </div>
+
+        <div id="Other" class="tab-pane fade">
+            <section class="well">
+                <h2>Usage Sher</h2>
+                <div class="table-responsive">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><label class="mandatory-field">Usage Sher</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <select id="UsageSher" class="form-control btn dropdown-toggle btn-default select"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Explanation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherExplanation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherExplanation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherExplanation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Translation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherTranslation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherTranslation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.UsageSherTranslation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Sher Audio</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="UsageSherAudio" name="Audio" />
+                                                <span style="color:red;">Upload .mp3 and .ogg file</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.UsageSherAudio != "")
+                                                {
+                                                    <audio controls>
+                                                        <source src="/Audio/@Model.UsageSherAudio" type="audio/ogg">
+                                                        <source src="/Audio/@Model.UsageSherAudio" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                }
+
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section class="well">
+                <h2>More Sher-1</h2>
+                <div class="table-responsive">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><label class="mandatory-field">More Sher </label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <select id="MoreSher1" class="form-control btn dropdown-toggle btn-default select"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Explanation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherExplanation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherExplanation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherExplanation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Translation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherTranslation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherTranslation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherTranslation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Sher Audio</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="MoreSherAudio" name="Audio" />
+                                                <span style="color:red;">Upload .mp3 and .ogg file</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.MoreSherAudio != "")
+                                                {
+                                                    <audio controls>
+                                                        <source src="/Audio/@Model.MoreSherAudio" type="audio/ogg">
+                                                        <source src="/Audio/@Model.MoreSherAudio" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section class="well">
+                <h2>More Sher-2</h2>
+                <div class="table-responsive">
+                    <table style="width:100%;">
+                        <tr>
+                            <td><label class="mandatory-field">More Sher </label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <select id="MoreSher2" class="form-control btn dropdown-toggle btn-default select"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th style="text-align:center;" class="mandatory-field">English</th>
+                            <th style="text-align:center;">Hindi</th>
+                            <th style="text-align:center;">Urdu</th>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Explanation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherExplanation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherExplanation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherExplanation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Translation</label></td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherTranslation_En, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherTranslation_Hi, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            @Html.TextAreaFor(model => model.MoreSherOtherTranslation_Ur, new { htmlAttributes = new { @class = "form-control", @dir = "RTL" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="mandatory-field">Sher Audio</label></td>
+                            <td colspan="2">
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                <input type="file" id="MoreSherOtherAudio" name="Image" />
+                                                <span style="color:red;">Upload .mp3 and .ogg file</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+                                            <p>
+                                                @if (Model.MoreSherOtherAudio != "")
+                                                {
+                                                    <audio controls>
+                                                        <source src="/Audio/@Model.MoreSherOtherAudio" type="audio/ogg">
+                                                        <source src="/Audio/@Model.MoreSherOtherAudio" type="audio/mpeg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                }
+
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-horizontal form-widgets col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+    <div id="DivMsg" style="color:red;font-weight:bold;" class="error-msg"></div>
+    <div style="text-align:center;">
+        <section class="well">
+            <input type="submit" value="Save" onclick="CheckToSave();" class="btn btn-default" />
+            @Html.ActionLink("Go back To View Word", "ViewWord", new { @class = "btn btn-default" })
+        </section>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+    $('textarea').summernote({
+        height: 170, // set editor height   
+        width: 300,
+        minHeight: null, // set minimum height of editor
+        maxHeight: null, // set maximum height of editor
+        focus: false, // set focus to editable area after initializing summernote
+        disableResizeEditor: true,
+         toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+              ]
+    });
+});
+    function CheckToSave() {
+       var result = true;
+         var ErrorMsg = "<ul>";
+        var SerialNo = $("#SerialNo").val().trim();
+        if (SerialNo == '' || SerialNo == undefined || SerialNo == null || SerialNo == 0) {
+            ErrorMsg += "<li>Please Fill the Serial No Field</li>";
+            result = false;
+        }
+        var Category_En = $("#CatgeoryId").val();
+        if (Category_En == '' || Category_En == undefined || Category_En == null) {
+            ErrorMsg += "<li>Please Select the Category Field</li>";
+            result = false;
+        }
+        var Word_En = $("#Word_En").val().trim();
+        if (Word_En == '' || Word_En == undefined || Word_En == null) {
+            ErrorMsg += "<li>Please Fill the Word_En Field</li>";
+            result = false;
+        }
+        var Descr_En = $("#Descr_En").val().trim();
+        if (Descr_En == '' || Descr_En == undefined || Descr_En == null) {
+            ErrorMsg += "<li>Please Fill the Descr En Field</li>";
+            result = false;
+        }
+        var Sher = $("#Sher").val();
+        if (Sher == '' || Sher == undefined || Sher == null) {
+            ErrorMsg += "<li>Please Select Sher</li>";
+            result = false;
+        }
+        var SherExplanation_En = $("#SherExplanation_En").val();
+        if (SherExplanation_En == '' || SherExplanation_En == undefined || SherExplanation_En == null) {
+            ErrorMsg += "<li>Please Fill Sher Explanation En</li>";
+            result = false;
+        }
+        var SherTranslation_En = $("#SherTranslation_En").val();
+        if (SherTranslation_En == '' || SherTranslation_En == undefined || SherTranslation_En == null) {
+            ErrorMsg += "<li>Please FIll Sher Translation En</li>";
+            result = false;
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var SherAudio = $("#SherAudio").val();
+            if (SherAudio == '' || SherAudio == undefined || SherAudio == null) {
+                ErrorMsg += "<li>Please Upload Sher Audio</li>";
+                result = false;
+            }
+        }
+        var PartOfSpeech = $("#PartOfSpeech").val();
+        if (PartOfSpeech == '' || PartOfSpeech == undefined || PartOfSpeech == null) {
+            ErrorMsg += "<li>Please Select the Part Of Speech Field</li>";
+            result = false;
+        }
+        var WordRoots = $("#WordRoots").val();
+        if (WordRoots == '' || WordRoots == undefined || WordRoots == null) {
+            ErrorMsg += "<li>Please Select the Word Roots Field</li>";
+            result = false;
+        }
+
+        if ('@ViewBag.Action' == 'New') {
+            var fileInput = $("#fileInput").val().trim();
+            if (fileInput == '' || fileInput == undefined || fileInput == null) {
+                ErrorMsg += "<li>Please Upload Icon Image</li>";
+                result = false;
+            }
+        }
+        var IsCorrect = $('input[name=IsCorrect]:radio:checked').val();
+        if (IsCorrect == '' || IsCorrect == undefined || IsCorrect == null || IsCorrect==0) {
+            ErrorMsg += "<li>Please Select the Quiz Option Checkbox Field</li>";
+            result = false;
+        }
+        var QuizOptionOne_En = $("#QuizOptionOne_En").val();
+        if (QuizOptionOne_En == '' || QuizOptionOne_En == undefined || QuizOptionOne_En == null) {
+            ErrorMsg += "<li>Please Fill the Quiz Option One En Field</li>";
+            result = false;
+        }
+        var QuizOptionOne_Hi = $("#QuizOptionOne_Hi").val();
+        if (QuizOptionOne_Hi == '' || QuizOptionOne_Hi == undefined || QuizOptionOne_Hi == null) {
+            ErrorMsg += "<li>Please Fill the Quiz Option One Hi Field</li>";
+            result = false;
+        }
+        var QuizOptionTwo_En = $("#QuizOptionTwo_En").val();
+        if (QuizOptionTwo_En == '' || QuizOptionTwo_En == undefined || QuizOptionTwo_En == null) {
+            ErrorMsg += "<li>Please Fill the Quiz Option Two En Field</li>";
+            result = false;
+        }
+        var QuizOptionTwo_Hi = $("#QuizOptionTwo_Hi").val();
+        if (QuizOptionTwo_Hi == '' || QuizOptionTwo_Hi == undefined || QuizOptionTwo_Hi == null) {
+            ErrorMsg += "<li>Please Fill the Quiz Option Two Hi Field</li>";
+            result = false;
+        }
+
+
+
+        var UsageSher = $("#UsageSher").val();
+        if (UsageSher == '' || UsageSher == undefined || UsageSher == null) {
+            ErrorMsg += "<li>Please FIll UsageSher</li>";
+            result = false;
+        }
+        var UsageSherExplanation_En = $("#UsageSherExplanation_En").val();
+        if (UsageSherExplanation_En == '' || UsageSherExplanation_En == undefined || UsageSherExplanation_En == null) {
+            ErrorMsg += "<li>Please Fill Usage Sher Explanation En</li>";
+            result = false;
+        }
+        var UsageSherTranslation_En = $("#UsageSherTranslation_En").val();
+        if (UsageSherTranslation_En == '' || UsageSherTranslation_En == undefined || UsageSherTranslation_En == null) {
+            ErrorMsg += "<li>Please FIll Usage Sher Translation En</li>";
+            result = false;
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var UsageSherAudio = $("#UsageSherAudio").val();
+            if (UsageSherAudio == '' || UsageSherAudio == undefined || UsageSherAudio == null) {
+                ErrorMsg += "<li>Please Upload Usage Sher Audio</li>";
+                result = false;
+            }
+        }
+
+        var MoreSher = $("#MoreSher1").val();
+        if (MoreSher == '' || MoreSher == undefined || MoreSher == null) {
+            ErrorMsg += "<li>Please Select More Sher</li>";
+            result = false;
+        }
+        var MoreSherExplanation_En = $("#MoreSherExplanation_En").val();
+        if (MoreSherExplanation_En == '' || MoreSherExplanation_En == undefined || MoreSherExplanation_En == null) {
+            ErrorMsg += "<li>Please Fill More Sher Explanation En</li>";
+            result = false;
+        }
+        var MoreSherTranslation_En = $("#MoreSherTranslation_En").val();
+        if (MoreSherTranslation_En == '' || MoreSherTranslation_En == undefined || MoreSherTranslation_En == null) {
+            ErrorMsg += "<li>Please FIll More Sher Translation En</li>";
+            result = false;
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var MoreSherAudio = $("#MoreSherAudio").val();
+            if (MoreSherAudio == '' || MoreSherAudio == undefined || MoreSherAudio == null) {
+                ErrorMsg += "<li>Please Upload More Sher Audio</li>";
+                result = false;
+            }
+        }
+
+        var MoreSherOther = $("#MoreSher2").val();
+        if (MoreSherOther == '' || MoreSherOther == undefined || MoreSherOther == null) {
+            ErrorMsg += "<li>Please Select More SherOther</li>";
+            result = false;
+        }
+        var MoreSherOtherExplanation_En = $("#MoreSherOtherExplanation_En").val();
+        if (MoreSherOtherExplanation_En == '' || MoreSherOtherExplanation_En == undefined || MoreSherOtherExplanation_En == null) {
+            ErrorMsg += "<li>Please Fill More Other Sher Explanation En</li>";
+            result = false;
+        }
+        var MoreSherOtherTranslation_En = $("#MoreSherOtherTranslation_En").val();
+        if (MoreSherOtherTranslation_En == '' || MoreSherOtherTranslation_En == undefined || MoreSherOtherTranslation_En == null) {
+            ErrorMsg += "<li>Please FIll More Other Sher Translation En</li>";
+            result = false;
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var MoreSherOtherAudio = $("#MoreSherOtherAudio").val();
+            if (MoreSherOtherAudio == '' || MoreSherOtherAudio == undefined || MoreSherOtherAudio == null) {
+                ErrorMsg += "<li>Please Upload More Sher Other Audio</li>";
+                result = false;
+            }
+        }
+        if ('@ViewBag.Action' == 'New') {
+            var WordAudio = $("#WordAudio").val();
+            if (WordAudio == '' || WordAudio == undefined || WordAudio == null) {
+                ErrorMsg += "<li>Please Upload Word Audio</li>";
+                result = false;
+            }
+        }
+        ErrorMsg += "</ul>";
+        if (result) {
+            ClickToSave();
+        }
+        else {
+            $("#DivMsg").html(ErrorMsg);
+            $("#DivMsg").css('color', 'red');
+        }
+    }
+    function ClickToSave() {
+        
+        var UserId = $(".UserContainer").attr("Userid");
+        var fileUpload = $("#fileInput").get(0);
+        var files = fileUpload.files;
+
+        var SherAudio = $("#SherAudio").get(0);
+        var SherAudiofiles = SherAudio.files;
+
+        var UsageSherAudio = $("#UsageSherAudio").get(0);
+        var UsageSherAudiofiles = UsageSherAudio.files;
+
+        var MoreSherAudio = $("#MoreSherAudio").get(0);
+        var MoreSherAudiofiles = MoreSherAudio.files;
+
+        var MoreSherOtherAudio = $("#MoreSherOtherAudio").get(0);
+        var MoreSherOtherAudiofiles = MoreSherOtherAudio.files;
+
+        var WordAudio = $("#WordAudio").get(0);
+        var WordAudiofiles = WordAudio.files;
+
+        var obj = new FormData();
+        obj.append("Id", $("#Id").val().trim());
+        obj.append("CatgeoryId", $('#CatgeoryId').val());
+        obj.append("SerialNo",$("#SerialNo").val().trim());
+        obj.append("Word_En",$('#Word_En').val().trim());
+        obj.append("Word_Hi", $('#Word_Hi').val().trim());
+        obj.append("Word_Ur",$('#Word_Ur').val().trim())
+        obj.append("Descr_En", $('#Descr_En').val().trim());
+        obj.append("Descr_Hi",$('#Descr_Hi').val().trim());
+        obj.append("Descr_Ur", $('#Descr_Ur').val().trim());
+
+        obj.append("Sher",$("#Sher").val());
+        obj.append("SherExplanation_En", $('#SherExplanation_En').val().trim());
+        obj.append("SherExplanation_Hi",$('#SherExplanation_Hi').val().trim());
+        obj.append("SherExplanation_Ur", $('#SherExplanation_Ur').val().trim());
+        obj.append("SherTranslation_En", $('#SherTranslation_En').val().trim());
+        obj.append("SherTranslation_Hi",$('#SherTranslation_Hi').val().trim());
+        obj.append("SherTranslation_Ur", $('#SherTranslation_Ur').val().trim());
+        obj.append("SherAudioFile", SherAudiofiles[0]);
+
+        obj.append("UsageSher",$("#UsageSher").val());
+        obj.append("UsageSherExplanation_En", $('#UsageSherExplanation_En').val().trim());
+        obj.append("UsageSherExplanation_Hi",$('#UsageSherExplanation_Hi').val().trim());
+        obj.append("UsageSherExplanation_Ur", $('#UsageSherExplanation_Ur').val().trim());
+        obj.append("UsageSherTranslation_En", $('#UsageSherTranslation_En').val().trim());
+        obj.append("UsageSherTranslation_Hi",$('#UsageSherTranslation_Hi').val().trim());
+        obj.append("UsageSherTranslation_Ur", $('#UsageSherTranslation_Ur').val().trim());
+        obj.append("UsgaeSherAudioFile", UsageSherAudiofiles[0]);
+
+        obj.append("MoreSher",$("#MoreSher1").val());
+        obj.append("MoreSherExplanation_En", $('#MoreSherExplanation_En').val().trim());
+        obj.append("MoreSherExplanation_Hi",$('#MoreSherExplanation_Hi').val().trim());
+        obj.append("MoreSherExplanation_Ur", $('#MoreSherExplanation_Ur').val().trim());
+        obj.append("MoreSherTranslation_En", $('#MoreSherTranslation_En').val().trim());
+        obj.append("MoreSherTranslation_Hi",$('#MoreSherTranslation_Hi').val().trim());
+        obj.append("MoreSherTranslation_Ur", $('#MoreSherTranslation_Ur').val().trim());
+        obj.append("MoreSherAudioFile", MoreSherAudiofiles[0]);
+
+        obj.append("MoreSherOther",$("#MoreSher2").val());
+        obj.append("MoreSherOtherExplanation_En", $('#MoreSherOtherExplanation_En').val().trim());
+        obj.append("MoreSherOtherExplanation_Hi",$('#MoreSherOtherExplanation_Hi').val().trim());
+        obj.append("MoreSherOtherExplanation_Ur", $('#MoreSherOtherExplanation_Ur').val().trim());
+        obj.append("MoreSherOtherTranslation_En", $('#MoreSherOtherTranslation_En').val().trim());
+        obj.append("MoreSherOtherTranslation_Hi",$('#MoreSherOtherTranslation_Hi').val().trim());
+        obj.append("MoreSherOtherTranslation_Ur", $('#MoreSherOtherTranslation_Ur').val().trim());
+        obj.append("MoreSherOtherAudioFile", MoreSherOtherAudiofiles[0]);
+
+
+        obj.append("PartOfSpeech", $("#PartOfSpeech").val());
+        obj.append("WordType", $("#WordType").val());
+        obj.append("WordRoots", $("#WordRoots").val());
+        obj.append("WordSynonyms", $("#WordSynonyms").val().trim());
+        obj.append("IsActive",$("#IsActive").val().trim());
+        obj.append("Image", files[0]);
+        obj.append("CreatedBy", UserId);
+        obj.append("ModifiedBy", UserId);
+        obj.append("WordAudioFile", WordAudiofiles[0]);
+
+        obj.append("QuizOptionOne_En", $('#QuizOptionOne_En').val().trim());
+        obj.append("QuizOptionOne_Hi", $('#QuizOptionOne_Hi').val().trim());
+        obj.append("QuizOptionTwo_En", $('#QuizOptionTwo_En').val().trim());
+        obj.append("QuizOptionTwo_Hi", $('#QuizOptionTwo_Hi').val().trim());
+        obj.append("IsCorrect", $('input[name=IsCorrect]:radio:checked').val());
+        obj.append("SEO_Slug", $("#SEO_Slug").val().trim());
+
+        $.ajax({
+            url: '/Home/AddWord',
+            type: "POST",
+            contentType: false, // Not to set any content header
+            processData: false, // Not to process data
+            data: obj,
+            success: function (result) {
+                $("#DivMsg").html(result.responseText);
+                if (result.success == true) {
+                    $("#DivMsg").css('color', 'green');
+                }
+                else {
+                    $("#DivMsg").css('color', 'red');
+                }
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+    }
+    $(document).ready(function () {
+        $("#Word_En").keyup(function () {
+            debugger;
+            var txtFilter = $("#Word_En").val();
+            if (txtFilter.length < 4) { return false;}
+            FillSher();
+        });
+
+    });
+    $(window).load(function () {
+        debugger;
+        var UserId = $(".UserContainer").attr("Userid");
+        $("#CreatedBy").val(UserId);
+        if ('@ViewBag.Action' != 'New') {
+            FillSher();
+            var Sher = '@Model.Sher';
+            var UsageSher = '@Model.UsageSher';
+            var MoreSher1 = '@Model.MoreSher';
+            var MoreSher2 = '@Model.MoreSherOther';
+            if (Sher != undefined || Sher != '') {
+                $("#Sher").val(Sher);
+            }
+            if (UsageSher != undefined || UsageSher != '') {
+                $("#UsageSher").val(UsageSher);
+            }
+            if (MoreSher1 != undefined || MoreSher1 != '') {
+                $("#MoreSher1").val(MoreSher1);
+            }
+            if (MoreSher2 != undefined || MoreSher2 != '') {
+                $("#MoreSher2").val(MoreSher2);
+            }
+            $("#WordRoots").val('@Model.WordRoots');
+        }
+    });
+    function FillSher() {
+        var txtFilter = $("#Word_En").val();
+              $("#Word_En").css("background-color", "yellow");
+              $.ajax({
+                url:"/Home/FillSher",
+                dataType: 'json',
+                data: { Filtertxt: txtFilter },
+                success: function (data) {
+                    $("#Sher").empty();
+                    $("#Sher").append("<option value='0' selected=true>Select</option>");
+                    $("#UsageSher").empty();
+                    $("#UsageSher").append("<option value='0' selected=true>Select</option>");
+                    $("#MoreSher1").empty();
+                    $("#MoreSher1").append("<option value='0' selected=true>Select</option>");
+                    $("#MoreSher2").empty();
+                    $("#MoreSher2").append("<option value='0' selected=true>Select</option>");
+                    $.each(data, function (index, optiondata) {
+                        $("#Sher").append("<option value='" + optiondata.Id + "' Selected ='" + optiondata.selected + "'>" + optiondata.Content + "</option>");
+                        $("#UsageSher").append("<option value='" + optiondata.Id + "' Selected ='" + optiondata.selected + "'>" + optiondata.Content + "</option>");
+                        $("#MoreSher1").append("<option value='" + optiondata.Id + "' Selected ='" + optiondata.selected + "'>" + optiondata.Content + "</option>");
+                        $("#MoreSher2").append("<option value='" + optiondata.Id + "' Selected ='" + optiondata.selected + "'>" + optiondata.Content + "</option>");
+                    });
+                    var Sher = '@Model.Sher';
+                    var UsageSher = '@Model.UsageSher';
+                    var MoreSher1 = '@Model.MoreSher';
+                    var MoreSher2 = '@Model.MoreSherOther';
+                    if (Sher != undefined || Sher != '') {
+                        $("#Sher").val(Sher);
+                    }
+                    else { $("#Sher").val(0); }
+
+                    if (UsageSher != undefined || UsageSher != '') {
+                        $("#UsageSher").val(UsageSher);
+                    } else { $("#UsageSher").val(0); }
+
+                    if (MoreSher1 != undefined || MoreSher1 != '') {
+                        $("#MoreSher1").val(MoreSher1);
+                    }
+                    else { $("#MoreSher1").val(0); }
+
+                    if (MoreSher2 != undefined || MoreSher2 != '') {
+                        $("#MoreSher2").val(MoreSher2);
+                    }
+                    else { $("#MoreSher2").val(0); }
+                    $("#Sher").selectpicker("refresh");
+                    $("#UsageSher").selectpicker("refresh");
+                    $("#MoreSher1").selectpicker("refresh");
+                    $("#MoreSher2").selectpicker("refresh");
+                }
+              });
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<style>
+    /* Override sample's browser styles */
+    #htmlEditorSample h1, #htmlEditorSample h2, #htmlEditorSample h3, #htmlEditorSample h4, #htmlEditorSample h5, #htmlEditorSample h6 {
+        margin: 0px;
+    }
+
+    #htmlEditorSample h1 {
+        font-size: 1.9em;
+    }
+
+    #sampleContainer {
+        overflow: visible;
+    }
+
+    .mandatory-field:after {
+        content: " *";
+        color: red;
+    }
+
+    #WordSynonyms {
+        width: 100%;
+        height: 70px;
+    }
+
+    .select {
+        max-width: 600px;
+        padding: 2px 10px;
+        border: 1px solid #979997;
+    }
+
+    .ui-autocomplete {
+        overflow: auto;
+        max-height: 100px;
+    }
+</style>

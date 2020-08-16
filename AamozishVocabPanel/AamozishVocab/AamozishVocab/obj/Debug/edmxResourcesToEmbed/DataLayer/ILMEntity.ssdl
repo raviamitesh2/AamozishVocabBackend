@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Rekhta_V5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Content">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TypeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TranslatorId" Type="uniqueidentifier" />
+    <Property Name="ParentId" Type="uniqueidentifier" />
+    <Property Name="Title_En" Type="nvarchar(max)" />
+    <Property Name="Title_Hi" Type="nvarchar(max)" />
+    <Property Name="Title_Ur" Type="nvarchar(max)" />
+    <Property Name="Content_En" Type="nvarchar(max)" />
+    <Property Name="Content_Hi" Type="nvarchar(max)" />
+    <Property Name="Content_Ur" Type="nvarchar(max)" />
+    <Property Name="Translation_En" Type="nvarchar(max)" />
+    <Property Name="FootNote_En" Type="nvarchar(max)" />
+    <Property Name="FootNote_Hi" Type="nvarchar(max)" />
+    <Property Name="FootNote_Ur" Type="nvarchar(max)" />
+    <Property Name="Radeef_En" Type="nvarchar(max)" />
+    <Property Name="Radeef_Hi" Type="nvarchar(max)" />
+    <Property Name="Radeef_Ur" Type="nvarchar(max)" />
+    <Property Name="Alignment" Type="int" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="IsMapped" Type="bit" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="IsLineCountValid" Type="bit" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="DatePublished" Type="datetime" />
+    <Property Name="DateLastPublished" Type="datetime" />
+    <Property Name="SEO_KeywordsEn" Type="nvarchar(max)" />
+    <Property Name="SEO_DescriptionEn" Type="nvarchar(max)" />
+    <Property Name="SEO_TextEn" Type="nvarchar(max)" />
+    <Property Name="SEO_KeywordsHi" Type="nvarchar(max)" />
+    <Property Name="SEO_DescriptionHi" Type="nvarchar(max)" />
+    <Property Name="SEO_TextHi" Type="nvarchar(max)" />
+    <Property Name="SEO_KeywordsUr" Type="nvarchar(max)" />
+    <Property Name="SEO_DescriptionUr" Type="nvarchar(max)" />
+    <Property Name="SEO_TextUr" Type="nvarchar(max)" />
+    <Property Name="SEO_Slug" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsChanged" Type="bit" Nullable="false" />
+    <Property Name="IsDeferred" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserInfo" Type="nvarchar(max)" />
+    <Property Name="SubTitle_En" Type="nvarchar(max)" />
+    <Property Name="SubTitle_Hi" Type="nvarchar(max)" />
+    <Property Name="SubTitle_Ur" Type="nvarchar(max)" />
+    <Property Name="LongRadeef_En" Type="nvarchar(max)" />
+    <Property Name="LongRadeef_Hi" Type="nvarchar(max)" />
+    <Property Name="LongRadeef_Ur" Type="nvarchar(max)" />
+    <Property Name="ShortUrlIndex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Difficulty" Type="smallint" />
+    <Property Name="Quality" Type="smallint" />
+    <Property Name="Popularity" Type="smallint" />
+    <Property Name="IsTranslation" Type="bit" Nullable="false" />
+    <Property Name="Explanation_En" Type="nvarchar(max)" />
+    <Property Name="TextType" Type="bit" Nullable="false" />
+    <Property Name="ContentHtml_En" Type="nvarchar(max)" />
+    <Property Name="ContentHtml_Hi" Type="nvarchar(max)" />
+    <Property Name="ContentHtml_Ur" Type="nvarchar(max)" />
+    <Property Name="TranslationHtml_En" Type="nvarchar(max)" />
+    <Property Name="ExplanationHtml_En" Type="nvarchar(max)" />
+    <Property Name="ExplainerId" Type="uniqueidentifier" />
+    <Property Name="Explanation_Hi" Type="nvarchar(max)" />
+    <Property Name="Explanation_Ur" Type="nvarchar(max)" />
+    <Property Name="Translation_Hi" Type="nvarchar(max)" />
+    <Property Name="Translation_Ur" Type="nvarchar(max)" />
+    <Property Name="TranslationHtml_Hi" Type="nvarchar(max)" />
+    <Property Name="TranslationHtml_Ur" Type="nvarchar(max)" />
+    <Property Name="ExplanationHtml_Hi" Type="nvarchar(max)" />
+    <Property Name="ExplanationHtml_Ur" Type="nvarchar(max)" />
+    <Property Name="HaveBannerWeb" Type="bit" Nullable="false" />
+    <Property Name="HaveBannerMobile" Type="bit" Nullable="false" />
+    <Property Name="Justified" Type="bit" Nullable="false" />
+    <Property Name="Out_of_Copyright_Purview" Type="bit" Nullable="false" />
+    <Property Name="Copyright_Permission" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Rekhta_V5ModelStoreContainer">
+    <EntitySet Name="Content" EntityType="Self.Content" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

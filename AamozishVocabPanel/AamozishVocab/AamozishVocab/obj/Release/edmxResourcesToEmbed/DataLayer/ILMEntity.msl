@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Rekhta_V5ModelStoreContainer" CdmEntityContainer="ILMEntities">
+    <EntitySetMapping Name="Contents">
+      <EntityTypeMapping TypeName="Rekhta_V5Model.Content">
+        <MappingFragment StoreEntitySet="Content">
+          <ScalarProperty Name="Copyright_Permission" ColumnName="Copyright_Permission" />
+          <ScalarProperty Name="Out_of_Copyright_Purview" ColumnName="Out_of_Copyright_Purview" />
+          <ScalarProperty Name="Justified" ColumnName="Justified" />
+          <ScalarProperty Name="HaveBannerMobile" ColumnName="HaveBannerMobile" />
+          <ScalarProperty Name="HaveBannerWeb" ColumnName="HaveBannerWeb" />
+          <ScalarProperty Name="ExplanationHtml_Ur" ColumnName="ExplanationHtml_Ur" />
+          <ScalarProperty Name="ExplanationHtml_Hi" ColumnName="ExplanationHtml_Hi" />
+          <ScalarProperty Name="TranslationHtml_Ur" ColumnName="TranslationHtml_Ur" />
+          <ScalarProperty Name="TranslationHtml_Hi" ColumnName="TranslationHtml_Hi" />
+          <ScalarProperty Name="Translation_Ur" ColumnName="Translation_Ur" />
+          <ScalarProperty Name="Translation_Hi" ColumnName="Translation_Hi" />
+          <ScalarProperty Name="Explanation_Ur" ColumnName="Explanation_Ur" />
+          <ScalarProperty Name="Explanation_Hi" ColumnName="Explanation_Hi" />
+          <ScalarProperty Name="ExplainerId" ColumnName="ExplainerId" />
+          <ScalarProperty Name="ExplanationHtml_En" ColumnName="ExplanationHtml_En" />
+          <ScalarProperty Name="TranslationHtml_En" ColumnName="TranslationHtml_En" />
+          <ScalarProperty Name="ContentHtml_Ur" ColumnName="ContentHtml_Ur" />
+          <ScalarProperty Name="ContentHtml_Hi" ColumnName="ContentHtml_Hi" />
+          <ScalarProperty Name="ContentHtml_En" ColumnName="ContentHtml_En" />
+          <ScalarProperty Name="TextType" ColumnName="TextType" />
+          <ScalarProperty Name="Explanation_En" ColumnName="Explanation_En" />
+          <ScalarProperty Name="IsTranslation" ColumnName="IsTranslation" />
+          <ScalarProperty Name="Popularity" ColumnName="Popularity" />
+          <ScalarProperty Name="Quality" ColumnName="Quality" />
+          <ScalarProperty Name="Difficulty" ColumnName="Difficulty" />
+          <ScalarProperty Name="ShortUrlIndex" ColumnName="ShortUrlIndex" />
+          <ScalarProperty Name="LongRadeef_Ur" ColumnName="LongRadeef_Ur" />
+          <ScalarProperty Name="LongRadeef_Hi" ColumnName="LongRadeef_Hi" />
+          <ScalarProperty Name="LongRadeef_En" ColumnName="LongRadeef_En" />
+          <ScalarProperty Name="SubTitle_Ur" ColumnName="SubTitle_Ur" />
+          <ScalarProperty Name="SubTitle_Hi" ColumnName="SubTitle_Hi" />
+          <ScalarProperty Name="SubTitle_En" ColumnName="SubTitle_En" />
+          <ScalarProperty Name="UserInfo" ColumnName="UserInfo" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsDeferred" ColumnName="IsDeferred" />
+          <ScalarProperty Name="IsChanged" ColumnName="IsChanged" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SEO_Slug" ColumnName="SEO_Slug" />
+          <ScalarProperty Name="SEO_TextUr" ColumnName="SEO_TextUr" />
+          <ScalarProperty Name="SEO_DescriptionUr" ColumnName="SEO_DescriptionUr" />
+          <ScalarProperty Name="SEO_KeywordsUr" ColumnName="SEO_KeywordsUr" />
+          <ScalarProperty Name="SEO_TextHi" ColumnName="SEO_TextHi" />
+          <ScalarProperty Name="SEO_DescriptionHi" ColumnName="SEO_DescriptionHi" />
+          <ScalarProperty Name="SEO_KeywordsHi" ColumnName="SEO_KeywordsHi" />
+          <ScalarProperty Name="SEO_TextEn" ColumnName="SEO_TextEn" />
+          <ScalarProperty Name="SEO_DescriptionEn" ColumnName="SEO_DescriptionEn" />
+          <ScalarProperty Name="SEO_KeywordsEn" ColumnName="SEO_KeywordsEn" />
+          <ScalarProperty Name="DateLastPublished" ColumnName="DateLastPublished" />
+          <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="IsLineCountValid" ColumnName="IsLineCountValid" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="IsMapped" ColumnName="IsMapped" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Alignment" ColumnName="Alignment" />
+          <ScalarProperty Name="Radeef_Ur" ColumnName="Radeef_Ur" />
+          <ScalarProperty Name="Radeef_Hi" ColumnName="Radeef_Hi" />
+          <ScalarProperty Name="Radeef_En" ColumnName="Radeef_En" />
+          <ScalarProperty Name="FootNote_Ur" ColumnName="FootNote_Ur" />
+          <ScalarProperty Name="FootNote_Hi" ColumnName="FootNote_Hi" />
+          <ScalarProperty Name="FootNote_En" ColumnName="FootNote_En" />
+          <ScalarProperty Name="Translation_En" ColumnName="Translation_En" />
+          <ScalarProperty Name="Content_Ur" ColumnName="Content_Ur" />
+          <ScalarProperty Name="Content_Hi" ColumnName="Content_Hi" />
+          <ScalarProperty Name="Content_En" ColumnName="Content_En" />
+          <ScalarProperty Name="Title_Ur" ColumnName="Title_Ur" />
+          <ScalarProperty Name="Title_Hi" ColumnName="Title_Hi" />
+          <ScalarProperty Name="Title_En" ColumnName="Title_En" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="TranslatorId" ColumnName="TranslatorId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
